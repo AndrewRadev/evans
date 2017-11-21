@@ -31,7 +31,7 @@ Dir.mktmpdir do |dir|
   end
 end
 
-if build_result =~ /error:|warning:/
+if build_result =~ /error:/
   exit 1
 else
   exit 0
