@@ -51,7 +51,6 @@ module Language::Rust
     EOF
 
     test = <<~EOF
-      #[macro_use]
       extern crate solution;
 
       mod solution_test {
