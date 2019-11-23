@@ -9,6 +9,6 @@ before_install:
   - curl -sSf https://static.rust-lang.org/rustup.sh | sh
 before_script:
   - cp config/database.yml.travis config/database.yml
-bundler_args: -j4 --without development production --quiet
+bundler_args: -j4 --without development production
 services:
   - redis-server
