@@ -66,7 +66,11 @@ describe SolutionHistory do
         .with('', 'first', 'ruby', {0 => [@first_comment]})
         .and_return(:diff)
 
+<<<<<<< HEAD
       expect(history.formatted_diff_for(nil, @first_revision)).to eq :diff
+=======
+      expect(history.formatted_diff_for(@first_revision)).to eq :diff
+>>>>>>> upstream-master
     end
 
     it 'can create formatted diffs for revisions' do
