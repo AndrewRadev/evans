@@ -39,8 +39,13 @@
               %li.passed-tests #{solution.passed_tests} успешни тест(а)
               %li.failed-tests #{solution.failed_tests} неуспешни тест(а)
           = link_to solution.user.name, solution.user
-          = format_code solution.code
+
+          .clear
+          %br
+
+          %div(data-toggleable data-show-text="Покажи кода" data-hide-text="Скрий кода")
+            = format_code solution.code
 
           - if solution.log.present? and (@challenge.checked? or admin?)
             .log
-              %pre.test-log(data-test-log)= solution.log
+              %pre.test-log(data-toggleable data-show-text="Покажи лога" data-hide-text="Скрий лога")= solution.log
