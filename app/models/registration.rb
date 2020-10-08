@@ -16,7 +16,7 @@ class Registration
 
   def attributes=(attributes)
     attributes.each do |key, value|
-      send "#{key}=", value
+      send "#{key}=", value.strip
     end
   end
 

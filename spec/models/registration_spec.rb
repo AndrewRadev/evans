@@ -14,6 +14,13 @@ describe Registration do
     expect(registration('Peter', '22222')).to_not be_valid
   end
 
+  it "strips any extra whitespace from the inputs" do
+    create :sign_up, full_name: 'Peter', faculty_number: '11111'
+
+    expect(registration(' Peter ', '11111')).to be_valid
+    expect(registration('Peter', "\n11111\n")).to be_valid
+  end
+
   it "requires an unused email" do
     create :user, email: 'used_by_user@example.org'
     create :sign_up, email: 'used_by_sign_up@example.org'
