@@ -8,11 +8,14 @@
           %th.number #
           %th.name Лекция
           %th.date Дата
+          %th.video Видео
 
       - @lectures.each.with_index do |lecture, index|
         %tr
           %td.number= index
           %td.name= link_to lecture_title(lecture), lecture_url(lecture)
           %td.date= lecture[:date]
+          %td.video= lecture_video_links(lecture)
+
   - else
     %p.missing Няма качени лекции
