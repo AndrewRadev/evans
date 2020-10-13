@@ -21,6 +21,13 @@
     %dt Краен срок
     %dd= l @challenge.closes_at
 
+  = admin_only do
+    %dl
+      %dt Решения
+      %dd
+        = @challenge.solutions.count
+        (#{@challenge.solutions.where(correct: true).count} верни)
+
   - if @challenge.closed?
     %p.closed Срокът за предаване на решения е отминал
 
