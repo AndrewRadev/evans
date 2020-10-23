@@ -3,7 +3,9 @@ $ ->
     td = $ this
     points = parseInt $('[data-points]', td).text(), 10
     adjustment = parseInt $('[data-adjustment]', td).text(), 10
+    maxPoints = parseInt $('[data-max-points]', td).text(), 10
 
+    td.attr 'title', "#{points}/#{maxPoints}"
     td.html ''
 
     appendPoint = (type) ->

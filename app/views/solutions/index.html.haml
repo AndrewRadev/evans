@@ -30,7 +30,9 @@
         %td.name= link_to solution.user_name, [@task, solution]
         %td.points
           - if show_results? @task
-            Точки: <span data-points>#{solution.total_points}</span> (<span data-adjustment>#{solution.adjustment}</span> добавка)
+            Точки: <span data-points>#{solution.total_points}</span> /
+            <span data-max-points>#{solution.max_points}</span>
+            (<span data-adjustment>#{solution.adjustment}</span> добавка)
         %td.results
           - if show_results? @task
             %span.passed Успешни тестове:
