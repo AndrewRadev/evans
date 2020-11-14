@@ -21,6 +21,9 @@
     %dt Краен срок
     %dd= l @challenge.closes_at
 
+    %dt Точки
+    %dd= @challenge.points
+
   = admin_only do
     %dl
       %dt Решения
