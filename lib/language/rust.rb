@@ -67,7 +67,7 @@ module Language::Rust
       results = nil
 
       FileUtils.cd(dir.join('solution')) do
-        results = `cargo test 2>&1`.strip
+        results = `cargo test --test solution_test 2>&1`.strip
       end
 
       TestResults.new({
