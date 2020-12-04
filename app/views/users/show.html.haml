@@ -48,6 +48,26 @@
     %p
       = link_to 'Признай', new_user_attribution_path(@user), class: :action
 
+  - if @user.solutions.any?
+    %section.tasks
+      %h2 Домашни
+      %ul
+        - @user.solutions.each do |solution|
+          %li
+            = link_to solution.task.name, solution
+            - if solution.task.has_visible_solutions?
+              (#{solution.points} точки)
+
+  - if @user.challenge_solutions.any?
+    %section.tasks
+      %h2 Предизвикателства
+      %ul
+        - @user.challenge_solutions.each do |challenge_solution|
+          %li
+            = link_to challenge_solution.challenge.name, challenge_solution.challenge
+            - if challenge_solution.challenge.closed?
+              (#{challenge_solution.challenge.points} точки)
+
   %section.posts
     - if @topics.present?
       %h2 Теми

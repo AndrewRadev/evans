@@ -3,6 +3,7 @@ class User < ActiveRecord::Base
   scope :students, -> { where(admin: false) }
 
   has_many :solutions
+  has_many :challenge_solutions
   has_many :tips
   has_many :attributions
 

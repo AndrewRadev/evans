@@ -36,7 +36,7 @@ ul.users {
   dl dt:first-child { margin-top: 5px; }
   dl dd { clear: right; margin: 5px 0; }
 
-  .attributions, .posts { @include content; }
+  .attributions, .posts, .tasks, .challenges { @include content; }
 }
 
 .avatar {
