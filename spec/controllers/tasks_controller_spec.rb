@@ -198,12 +198,4 @@ describe TasksController do
       expect(response).to render_template(:edit)
     end
   end
-
-  describe "GET guide" do
-    it "renders the guide for the current language" do
-      allow(Language).to receive(:language).and_return('clojure')
-      get :guide
-      expect(response).to render_template 'tasks/guides/clojure'
-    end
-  end
 end

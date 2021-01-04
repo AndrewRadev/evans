@@ -15,7 +15,6 @@ Trane::Application.routes.draw do
   resources :lectures, only: :index
 
   resources :tasks, except: :destroy do
-    get :guide, on: :collection
     resources :solutions, only: %w(index show update) do
       get :unscored, on: :collection
     end
@@ -57,6 +56,10 @@ Trane::Application.routes.draw do
 
   resource :team, only: :show
   resource :preview, only: :create
+
+  get 'guides/tasks',      as: :task_guide
+  get 'guides/challenges', as: :challenge_guide
+  get 'guides/projects',   as: :project_guide
 
   if Rails.env.test?
     get '/backdoor/login',  to: 'backdoor#login'

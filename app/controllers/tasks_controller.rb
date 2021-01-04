@@ -1,5 +1,5 @@
 class TasksController < ApplicationController
-  before_action :require_admin, except: %w(index show guide)
+  before_action :require_admin, except: %w(index show)
 
   def index
     @tasks = if admin?
@@ -42,9 +42,5 @@ class TasksController < ApplicationController
     else
       render :edit
     end
-  end
-
-  def guide
-    render "tasks/guides/#{Language.language}"
   end
 end
