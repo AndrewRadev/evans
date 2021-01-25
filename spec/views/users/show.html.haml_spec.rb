@@ -5,6 +5,7 @@ describe "users/show.html.haml" do
 
   before do
     allow(view).to receive(:admin?).and_return(false)
+    allow(user).to receive(:points).and_return(42)
     assign :user, user
   end
 
