@@ -26,9 +26,13 @@
       %dt Поща
       %dd= @user.email
 
-    - if logged_in?
+    - if logged_in? && @user.about.present?
       %dt За вас
       %dd= @user.about
+
+    - if admin?
+      %dt Точки
+      %dd= @user.points
 
   - if logged_in? && @user == current_user
     %p
