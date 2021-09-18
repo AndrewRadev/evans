@@ -54,6 +54,7 @@ u.update_columns(
   twitter: nil,
   github: nil,
   skype: nil,
+  discord: nil,
   phone: nil,
   site: nil,
   about: nil,

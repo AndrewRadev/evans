@@ -14,6 +14,10 @@
       %dt Twitter
       %dd= link_to @user.twitter, "http://twitter.com/#{@user.twitter}"
 
+    - if logged_in? and @user.discord.present?
+      %dt Discord
+      %dd= @user.discord
+
     - if logged_in? and @user.skype.present?
       %dt Skype
       %dd= @user.skype
