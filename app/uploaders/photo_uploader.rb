@@ -23,7 +23,7 @@ class PhotoUploader < CarrierWave::Uploader::Base
   def convert_to_jpeg
     manipulate! do |image|
       image.flatten
-      image.colorspace 'RGB'
+      image.colorspace 'sRGB'
       image.strip
       image.quality '100'
       image.format 'jpeg'
