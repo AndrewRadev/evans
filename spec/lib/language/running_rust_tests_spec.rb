@@ -65,7 +65,7 @@ END
     it "collects the execution log" do
       expect(@results.log).to include("test solution_test::test_code ... ok")
       expect(@results.log).to include("test solution_test::test_code_2 ... ok")
-      expect(@results.log).to include("test solution_test::test_expected_failing ... ok")
+      expect(@results.log).to include("test solution_test::test_expected_failing - should panic ... ok")
       expect(@results.log).to include("test solution_test::test_failing ... FAILED")
       expect(@results.log).to include("test solution_test::test_2_failing ... FAILED")
     end
