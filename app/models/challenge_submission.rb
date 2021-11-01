@@ -53,8 +53,14 @@ class ChallengeSubmission
   end
 
   def code_is_parsable
-    unless Language.parsing? code
-      errors.add :code, 'имате синтактична грешка'
+    success, output = Language.parse(code)
+
+    unless success
+      if output.present?
+        errors.add :code, "имате синтактична грешка: \n#{output}"
+      else
+        errors.add :code, "имате синтактична грешка"
+      end
     end
   end
 end

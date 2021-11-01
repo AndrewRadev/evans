@@ -1,3 +1,5 @@
+require 'open3'
+
 module Language::Rust
   extend self
 
@@ -31,12 +33,20 @@ module Language::Rust
     END
   end
 
-  def parsing?(code)
+  def parse(code)
     TempDir.for('code.rs' => code) do |dir|
       script_path = Rails.root.join('lib/language/rust/syntax_check.rb')
       code_path   = dir.join('code.rs')
 
-      system script_path.to_s, code_path.to_s
+      process, output = Open3.popen3(script_path.to_s, code_path.to_s) do |_, stdout, _, thread|
+        [thread.value, stdout.read]
+      end
+
+      if process.exitstatus.zero?
+        [true, nil]
+      else
+        [false, output]
+      end
     end
   end
 

@@ -33,6 +33,7 @@ Dir.mktmpdir do |dir|
 end
 
 if build_result =~ /error:/
+  puts build_result
   exit 1
 else
   exit 0

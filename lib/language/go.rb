@@ -31,13 +31,16 @@ module Language::Go
     END
   end
 
-  def parsing?(code)
-    TempDir.for('code.go' => code) do |dir|
-      script_path = Rails.root.join('lib/language/go/syntax_check.rb')
-      code_path   = dir.join('code.go')
+  def parse(code)
+    success =
+      TempDir.for('code.go' => code) do |dir|
+        script_path = Rails.root.join('lib/language/go/syntax_check.rb')
+        code_path   = dir.join('code.go')
 
-      system script_path.to_s, code_path.to_s
-    end
+        system script_path.to_s, code_path.to_s
+      end
+
+    [success, nil]
   end
 
   def run_tests(test, solution)
