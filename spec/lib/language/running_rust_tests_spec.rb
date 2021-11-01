@@ -3,8 +3,6 @@ require 'spec_helper'
 describe "Running Rust tests", rust: true do
   before(:all) do
     @test_case_code = <<END.strip
-extern crate solution;
-
 #[test]
 fn test_code() {
     assert!(solution::return_one() == 1i32);
