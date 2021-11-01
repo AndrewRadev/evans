@@ -35,11 +35,14 @@
   <script>hljs.initHighlighting()</script>
 
   %p
+    Задължително прочетете (или си припомнете):
     = link_to "Указания за предаване на домашни", task_guide_path
 
   - if @task.basic_test_case?
-    %div(data-toggleable data-show-text="Базов тест" data-hide-text="Скрий теста")
-      = format_code @task.basic_test_case
+    %p
+      Погрижете се решението ви да се компилира с базовия тест:
+      %div(data-toggleable data-show-text="Базов тест" data-hide-text="Скрий теста")
+        = format_code @task.basic_test_case
 
   - if @task.has_restrictions?
     = render 'restrictions', explainer: RubocopExplainer.new(@task.restrictions_hash)
