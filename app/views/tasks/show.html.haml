@@ -24,6 +24,9 @@
   - if @task.closed?
     %p.closed Срокът за предаване на решения е отминал
 
+    %div(data-toggleable data-show-text="Пълен тест" data-hide-text="Пълен тест")
+      = format_code @task.test_case
+
   = markup @task.description, auto_link: false
 
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.4.1/styles/default.min.css" />
