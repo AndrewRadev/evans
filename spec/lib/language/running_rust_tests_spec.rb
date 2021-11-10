@@ -3,8 +3,6 @@ require 'spec_helper'
 describe "Running Rust tests", rust: true do
   before(:all) do
     @test_case_code = <<END.strip
-extern crate solution;
-
 #[test]
 fn test_code() {
     assert!(solution::return_one() == 1i32);
@@ -67,7 +65,7 @@ END
     it "collects the execution log" do
       expect(@results.log).to include("test solution_test::test_code ... ok")
       expect(@results.log).to include("test solution_test::test_code_2 ... ok")
-      expect(@results.log).to include("test solution_test::test_expected_failing ... ok")
+      expect(@results.log).to include("test solution_test::test_expected_failing - should panic ... ok")
       expect(@results.log).to include("test solution_test::test_failing ... FAILED")
       expect(@results.log).to include("test solution_test::test_2_failing ... FAILED")
     end

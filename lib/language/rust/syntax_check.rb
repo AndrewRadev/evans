@@ -22,7 +22,7 @@ Dir.mktmpdir do |dir|
         name = "solution"
         version = "0.1.0"
         authors = ["Rust Course <fmi@rust-lang.bg>"]
-        edition = "2018"
+        edition = "2021"
 
         [dependencies]
       EOF

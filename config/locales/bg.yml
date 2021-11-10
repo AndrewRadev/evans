@@ -97,6 +97,7 @@ bg:
         checked: Проверена
         hidden: Скрита
         test_case: Тест
+        basic_test_case: Базов тест
         closes_at: Краен срок
       solution:
         adjustment: Корекция

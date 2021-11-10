@@ -56,14 +56,12 @@ module Language::Rust
       name = "solution"
       version = "0.1.0"
       authors = ["Rust Course <fmi@rust-lang.bg>"]
-      edition = "2018"
+      edition = "2021"
 
       [dependencies]
     EOF
 
     test = <<~EOF
-      extern crate solution;
-
       mod solution_test {
         #{test}
       }
@@ -80,10 +78,12 @@ module Language::Rust
         results = `cargo test --test solution_test 2>&1`.strip
       end
 
+      result_lines = results.split("\n")
+
       TestResults.new({
         log:    results,
-        passed: results.split("\n").grep(/^test solution_test::test_[a-z0-9_]+ ... ok$/),
-        failed: results.split("\n").grep(/^test solution_test::test_[a-z0-9_]+ ... [^o][^k]/),
+        passed: result_lines.grep(/^test solution_test::test_[a-z0-9_]+( - should panic)? ... ok$/),
+        failed: result_lines.grep(/^test solution_test::test_[a-z0-9_]+( - should panic)? ... [^o][^k]/),
       })
     end
   end

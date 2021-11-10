@@ -24,12 +24,25 @@
   - if @task.closed?
     %p.closed Срокът за предаване на решения е отминал
 
+    %div(data-toggleable data-show-text="Пълен тест, използван за оценяване" data-hide-text="Скрий теста")
+      = format_code @task.test_case
+
   = markup @task.description, auto_link: false
 
   <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.4.1/styles/default.min.css" />
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.4.1/highlight.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.4.1/languages/rust.min.js"></script>
   <script>hljs.initHighlighting()</script>
+
+  %p
+    Задължително прочетете (или си припомнете):
+    = link_to "Указания за предаване на домашни", task_guide_path
+
+  - if @task.basic_test_case?
+    %p
+      Погрижете се решението ви да се компилира с базовия тест:
+      %div(data-toggleable data-show-text="Базов тест" data-hide-text="Скрий теста")
+        = format_code @task.basic_test_case
 
   - if @task.has_restrictions?
     = render 'restrictions', explainer: RubocopExplainer.new(@task.restrictions_hash)
