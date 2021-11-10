@@ -3,7 +3,6 @@ module Language
 
   delegate :language,
            :parse,
-           :parsing?,
            :run_tests,
            :extension,
            :solution_dump,

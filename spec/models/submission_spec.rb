@@ -5,7 +5,7 @@ describe Submission do
   let(:task) { create :open_task }
 
   before do
-    allow(Language).to receive(:parsing?).and_return(true)
+    allow(Language).to receive(:parse).and_return([true, nil])
     allow(Language).to receive(:can_lint?).and_return(false)
   end
 
@@ -49,7 +49,7 @@ describe Submission do
   end
 
   it "indicates if the submission is unsuccessful due to invalid code" do
-    allow(Language).to receive(:parsing?).and_return(false)
+    allow(Language).to receive(:parse).and_return([false, nil])
 
     submission = Submission.new(user, task, 'unparsable code')
     expect(submission.submit).to be false
@@ -116,7 +116,7 @@ describe Submission do
     end
 
     it "doesn't invoke the linter on code with syntax errors" do
-      allow(Language).to receive(:parsing?).and_return(false)
+      allow(Language).to receive(:parse).and_return([false, nil])
       expect(Language).not_to receive(:lint)
       submit user, task, 'code'
     end
