@@ -32,7 +32,7 @@ Log output
     END
   end
 
-  def parse(code)
+  def parse(code, _test_case)
     success =
       TempDir.for('code.rb' => code) do |dir|
         code_path = dir.join('code.rb')

@@ -33,12 +33,13 @@ module Language::Rust
     END
   end
 
-  def parse(code)
-    TempDir.for('code.rs' => code) do |dir|
+  def parse(code, test_case)
+    TempDir.for('code.rs' => code, 'test.rs' => test_case) do |dir|
       script_path = Rails.root.join('lib/language/rust/syntax_check.rb')
       code_path   = dir.join('code.rs')
+      test_path   = dir.join('test.rs')
 
-      process, output = Open3.popen3(script_path.to_s, code_path.to_s) do |_, stdout, _, thread|
+      process, output = Open3.popen3(script_path.to_s, code_path.to_s, test_path.to_s) do |_, stdout, _, thread|
         [thread.value, stdout.read]
       end
 

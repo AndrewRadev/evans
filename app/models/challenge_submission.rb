@@ -56,10 +56,12 @@ class ChallengeSubmission
     success, output = Language.parse(code)
 
     unless success
+      message = 'имате синтактична или компилационна грешка'
+
       if output.present?
-        errors.add :code, "имате синтактична грешка: \n#{output}"
+        errors.add :code, "#{message}: \n#{output}"
       else
-        errors.add :code, "имате синтактична грешка"
+        errors.add :code, message
       end
     end
   end

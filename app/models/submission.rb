@@ -47,14 +47,17 @@ class Submission
   end
 
   def code_is_parsable_and_compliant_with_restrictions
-    success, output = Language.parse(code)
+    success, output = Language.parse(code, @task.basic_test_case)
 
     unless success
+      message = 'имате синтактична или компилационна грешка'
+
       if output.present?
-        errors.add :code, "имате синтактична грешка: \n#{output}"
+        errors.add :code, "#{message}: \n#{output}"
       else
-        errors.add :code, "имате синтактична грешка"
+        errors.add :code, message
       end
+
       return
     end
 

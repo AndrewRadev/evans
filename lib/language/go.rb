@@ -31,7 +31,7 @@ module Language::Go
     END
   end
 
-  def parse(code)
+  def parse(code, _test_case)
     success =
       TempDir.for('code.go' => code) do |dir|
         script_path = Rails.root.join('lib/language/go/syntax_check.rb')

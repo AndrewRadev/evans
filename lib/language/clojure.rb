@@ -31,7 +31,7 @@ module Language::Clojure
     END
   end
 
-  def parse(code)
+  def parse(code, _test_case)
     success =
       TempDir.for('code.clj' => code) do |dir|
         Dir.chdir(dir) do

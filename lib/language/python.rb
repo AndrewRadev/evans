@@ -31,7 +31,7 @@ module Language::Python
     END
   end
 
-  def parse(code)
+  def parse(code, _test_case)
     success =
       TempDir.for('code.py' => code) do |dir|
         code_path = dir.join('code.py')
