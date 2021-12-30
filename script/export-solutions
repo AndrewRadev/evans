@@ -1,0 +1,17 @@
+#! /usr/bin/env ruby
+
+if ARGV.count < 1
+  STDERR.puts "USAGE: bundle exec rails runner script/export-solutions <task-id>"
+  exit 1
+end
+
+task = Task.find(Integer(ARGV.first))
+target_dir = Rails.root.join('tmp', 'exported-solutions')
+
+FileUtils.rm_r(target_dir.to_s) if target_dir.directory?
+FileUtils.mkdir_p(target_dir.to_s)
+
+task.solutions.order('created_at ASC').each.with_index do |solution, index|
+  filename = "#{'%03d' % (index + 1)}_#{solution.user_name.gsub(/\s+/, '_')}.rs"
+  IO.write(target_dir.join(filename), solution.code.gsub("\r\n", "\n"))
+end
