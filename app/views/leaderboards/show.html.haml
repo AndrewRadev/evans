@@ -5,6 +5,7 @@
     %thead
       %tr
         %th.rank №
+        %th.fn ФН
         %th.photo
         %th.name Име
         %th.points Точки
@@ -12,6 +13,8 @@
       - @points_breakdowns.each do |breakdown|
         %tr{class: breakdown.medal}
           %td.rank= breakdown.rank
+          %td.fn
+            = breakdown.faculty_number
           %td.photo
             = link_to user_path(breakdown.id) do
               - if breakdown.photo.zero?
