@@ -28,11 +28,7 @@
       = format_code @task.test_case
 
   = markup @task.description, auto_link: false
-
-  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/10.4.1/styles/default.min.css" />
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.4.1/highlight.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.4.1/languages/rust.min.js"></script>
-  <script>hljs.initHighlighting()</script>
+  = render 'common/highlightjs'
 
   %p
     Задължително прочетете (или си припомнете):
