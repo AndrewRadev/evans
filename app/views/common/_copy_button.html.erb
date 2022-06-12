@@ -17,7 +17,13 @@
 
     $('pre code').each(function() {
       var code = $(this).text();
-      var $copyButton = $('<button class="copy-button">' + copyIcon + '</button>');
+
+      if (code.split("\n").length > 2) {
+        var $copyButton = $('<button class="copy-button">' + copyIcon + '</button>');
+      } else {
+        var $copyButton = $('<button class="copy-button small">' + copyIcon + '</button>');
+      }
+
       var timeout = null;
 
       $(this).append($copyButton);

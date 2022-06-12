@@ -41,6 +41,14 @@
       &:hover {
         background-color: #f3f4f6;
       }
+
+      &.small {
+        background-color: transparent;
+        padding: 0;
+        border: 0;
+        top: 2px;
+        right: 2px;
+      }
     }
 
     &:hover {
