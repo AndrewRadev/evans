@@ -16,12 +16,38 @@
   pre > code { display: block; overflow-x: auto; }
 
   code {
+    position: relative;
     background: rgba(white, 0.5);
     border-radius: 3px;
     border: 1px solid darken(white, 20%);
     font-family: $font-monospace;
     font-size: $font-monospace-size;
     padding: 1px 2px;
+
+    .copy-button {
+      display: none;
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      cursor: pointer;
+
+      // Styles mostly taken from github:
+      background-color: #f6f8fa;
+      border: 1px solid rgba(27, 31, 36, 0.15);
+      border-radius: 6px;
+      box-shadow: 0 1 px 0 rgba(27, 31, 36, 0.04), inset 0 1 px 0 rgba(255, 255, 255, 0.25);
+      padding: 5px 10px;
+
+      &:hover {
+        background-color: #f3f4f6;
+      }
+    }
+
+    &:hover {
+      .copy-button {
+        display: block;
+      }
+    }
   }
 
   blockquote { font-style: italic; padding-left: 20px; }
