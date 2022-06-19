@@ -21,7 +21,7 @@
         %li.failed-tests #{@solution.failed_tests} неуспешни тест(а)
 
   %h2 Код
-  = solution_code @history.formatted_code, @history.last_revision, @solution.commentable_by?(current_user)
+  = solution_code @history.formatted_code, @history.last_revision, @solution.commentable_by?(current_user), copyable_code: @history.code
 
   - if show_results?(@solution.task) and @solution.log.present?
     %h2 Лог от изпълнението
@@ -39,7 +39,7 @@
 
       - if previous_revision
         %div(data-toggleable data-show-text="Покажи разликите" data-hide-text="Скрий разликите")
-          = solution_code @history.formatted_diff_for(previous_revision, revision), revision, @solution.commentable_by?(current_user)
+          = solution_code @history.formatted_diff_for(previous_revision, revision), revision, @solution.commentable_by?(current_user), copyable_code: previous_revision.code
       - else
         -# Това е първото решение, diff-а няма да е полезен
 

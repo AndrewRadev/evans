@@ -1,0 +1,42 @@
+copyIcon = '<img src="<%= image_path("icons/copy.png") %>" />'
+tickIcon = '<img src="<%= image_path("icons/tick.png") %>" />'
+
+copyToClipboard = (text) =>
+  # Create a temporary textarea whose contents we can "select" and copy using `execCommand`.
+  tempInput = document.createElement('textarea')
+  textNode = document.createTextNode(text)
+  tempInput.appendChild(textNode)
+  document.body.appendChild(tempInput)
+
+  tempInput.select()
+  document.execCommand('copy')
+  document.body.removeChild(tempInput)
+
+window.activateCopyButton = ($element) ->
+  # is there an existing button?
+  $copyButton = $element.find('.js-copy-button')
+
+  if $copyButton.length > 0
+    code = $copyButton.data('code')
+  else
+    code = $element.text()
+
+    if code.split("\n").length > 2
+      $copyButton = $("<button class=\"js-copy-button copy-button\">#{copyIcon}</button>")
+    else
+      $copyButton = $("<button class=\"js-copy-button copy-button small\">#{copyIcon}</button>")
+
+    $element.append($copyButton)
+
+  timeout = null
+
+  $copyButton.on 'click', =>
+    cancelTimeout(timeout) if timeout
+
+    copyToClipboard(code)
+    $copyButton.html(tickIcon)
+
+    timeout = setTimeout(=>
+      $copyButton.html(copyIcon)
+      timeout = null
+    , 1000)

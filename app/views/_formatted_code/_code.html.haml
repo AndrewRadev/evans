@@ -15,3 +15,8 @@
         - if line.comments.any? and commentable and line.commentable?
           .options
             %button.reply-button(data-add-comment data-reply-button) Нов коментар
+
+  - if defined? copyable_code
+    - if copyable_code
+      %button.copy-button.js-copy-button{'data-code' => copyable_code}
+        = image_tag 'icons/copy.png'

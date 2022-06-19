@@ -30,6 +30,32 @@
   &:hover { background-color: darken($subtitle-color, 10%); text-decoration: none; }
 }
 
+@mixin copy-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+
+  // Styles mostly taken from github:
+  background-color: #f6f8fa;
+  border: 1px solid rgba(27, 31, 36, 0.15);
+  border-radius: 6px;
+  box-shadow: 0 1 px 0 rgba(27, 31, 36, 0.04), inset 0 1 px 0 rgba(255, 255, 255, 0.25);
+  padding: 5px 10px;
+
+  &:hover {
+    background-color: #f3f4f6;
+  }
+
+  &.small {
+    background-color: transparent;
+    padding: 0;
+    border: 0;
+    top: 2px;
+    right: 2px;
+  }
+}
+
 @mixin replace-with-image($img, $width, $height) {
   background: { image: image-url($img); repeat: no-repeat; }
   overflow: hidden;

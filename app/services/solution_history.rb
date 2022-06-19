@@ -29,6 +29,10 @@ class SolutionHistory
     history.combined_comments
   end
 
+  def code
+    last_revision.code
+  end
+
   def formatted_code
     FormattedCode::Code.new last_revision.code, Language.language, combined_comments
   end
