@@ -1,5 +1,5 @@
 .code.js-code-with-comments
-  = render form_partial, *form_partial_args if commentable
+  = render form_partial, form_partial_args if commentable
 
   - code.lines.each do |line|
     .line{'data-line-number' => line.line_number}
