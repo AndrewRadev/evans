@@ -4,5 +4,7 @@
 :javascript
   if (typeof hljs !== 'undefined') {
     hljs.configure({ languages: ['rust'] });
-    hljs.highlightAll();
+    document.querySelectorAll('pre code').forEach((el) => {
+      hljs.highlightElement(el);
+    });
   }
