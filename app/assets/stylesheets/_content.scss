@@ -12,7 +12,7 @@
   ul > li > ul > li { list-style: square; }
   ol > li { list-style: decimal; }
 
-  pre { font-family: $font-monospace; padding: 10px; font-size: $font-monospace-size; }
+  pre { font-family: $font-monospace; font-size: $font-monospace-size; }
   pre > code { display: block; overflow-x: auto; }
 
   code {
