@@ -3,7 +3,7 @@ require 'capistrano/ext/multistage'
 
 set :application,   'Trane Revisited'
 set :scm,           :git
-set :repository,    'git://github.com/skanev/evans.git'
+set :repository,    'git@github.com:skanev/evans.git'
 set :branch,        'master'
 set :user,          'pyfmi'
 set :user_and_host, 'pyfmi@deedee.hno3.org'
@@ -15,6 +15,10 @@ set :normalize_asset_timestamps, false
 namespace :deploy do
   task :restart, :roles => :app, :except => {:no_release => true} do
     run "touch #{current_path}/tmp/restart.txt"
+  end
+
+  task :check_environment do
+    run "env; which ruby; ruby -v; rbenv version"
   end
 
   task :symlink_shared, :roles => :app do
@@ -36,6 +40,7 @@ namespace :deploy do
   end
 end
 
+before 'deploy:update_code', 'deploy:check_environment'
 after 'deploy:setup',       'deploy:setup_shared'
 after 'deploy:update_code', 'deploy:symlink_shared'
 after 'deploy:update_code', 'deploy:assets:precompile'
