@@ -12,7 +12,6 @@ gem 'will_paginate'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'draper'
-gem 'bigdecimal', '1.3.5'
 
 gem 'protected_attributes', '~> 1.0.0'
 gem 'rails-observers'
