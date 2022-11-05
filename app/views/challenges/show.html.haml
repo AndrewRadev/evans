@@ -34,6 +34,9 @@
   - if @challenge.closed?
     %p.closed Срокът за предаване на решения е отминал
 
+    %div(data-toggleable data-show-text="Пълен тест, използван за оценяване" data-hide-text="Скрий теста")
+      = format_code @challenge.test_case
+
   = markup @challenge.description, auto_link: false
   = render 'common/highlightjs'
 
