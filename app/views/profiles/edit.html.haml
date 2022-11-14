@@ -35,7 +35,7 @@
   %fieldset
     %legend Промяна на парола
     %p Ако не искате да променяте паролата си, оставете долните полета празни:
-    = form.input :password
+    = form.input :password, input_html: { autocomplete: 'off' }
     = form.input :password_confirmation
 
   = form.button :submit, 'Запази'
