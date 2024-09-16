@@ -2,7 +2,7 @@ module Language
   extend self
 
   delegate :language,
-           :parsing?,
+           :parse,
            :run_tests,
            :extension,
            :solution_dump,

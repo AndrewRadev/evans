@@ -31,11 +31,14 @@ module Language::Python
     END
   end
 
-  def parsing?(code)
-    TempDir.for('code.py' => code) do |dir|
-      code_path = dir.join('code.py')
-      system "python3.8 -m py_compile #{code_path} > /dev/null 2>&1"
-    end
+  def parse(code, _test_case)
+    success =
+      TempDir.for('code.py' => code) do |dir|
+        code_path = dir.join('code.py')
+        system "python3.8 -m py_compile #{code_path} > /dev/null 2>&1"
+      end
+
+    [success, nil]
   end
 
   def run_tests(test, solution)

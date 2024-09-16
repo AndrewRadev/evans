@@ -32,11 +32,14 @@ Log output
     END
   end
 
-  def parsing?(code)
-    TempDir.for('code.rb' => code) do |dir|
-      code_path = dir.join('code.rb')
-      system "ruby -c #{code_path} > /dev/null 2>&1"
-    end
+  def parse(code, _test_case)
+    success =
+      TempDir.for('code.rb' => code) do |dir|
+        code_path = dir.join('code.rb')
+        system "ruby -c #{code_path} > /dev/null 2>&1"
+      end
+
+    [success, nil]
   end
 
   def run_tests(test, solution)
