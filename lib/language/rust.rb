@@ -72,8 +72,8 @@ module Language::Rust
 
       TestResults.new({
         log:    results,
-        passed: result_lines.grep(/^test solution_test::test_[a-z0-9_]+( - should panic)? ... ok$/),
-        failed: result_lines.grep(/^test solution_test::test_[a-z0-9_]+( - should panic)? ... [^o][^k]/),
+        passed: result_lines.grep(/^test solution_test::[a-z0-9_]+( - should panic)? ... ok$/),
+        failed: result_lines.grep(/^test solution_test::[a-z0-9_]+( - should panic)? ... [^o][^k]/),
       })
     end
   end
