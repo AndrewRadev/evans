@@ -48,6 +48,9 @@ module Language::Rust
       authors = ["Rust Course <fmi@rust-lang.bg>"]
       edition = "2021"
 
+      [dev-dependencies]
+      futures = "0.3.31"
+
       [dependencies]
     EOF
 
