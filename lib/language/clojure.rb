@@ -31,13 +31,16 @@ module Language::Clojure
     END
   end
 
-  def parsing?(code)
-    TempDir.for('code.clj' => code) do |dir|
-      Dir.chdir(dir) do
-        code_path = dir.join('code.clj')
-        system "clojure -i #{code_path} > /dev/null 2>&1"
+  def parse(code, _test_case)
+    success =
+      TempDir.for('code.clj' => code) do |dir|
+        Dir.chdir(dir) do
+          code_path = dir.join('code.clj')
+          system "clojure -i #{code_path} > /dev/null 2>&1"
+        end
       end
-    end
+
+    [success, nil]
   end
 
   def run_tests(test, solution)

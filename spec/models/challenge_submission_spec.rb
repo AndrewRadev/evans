@@ -29,7 +29,7 @@ describe ChallengeSubmission do
     let(:submission) { ChallengeSubmission.for challenge, user }
 
     before do
-      allow(Language).to receive(:parsing?).and_return(true)
+      allow(Language).to receive(:parse).and_return([true, nil])
     end
 
     it "verifies that the challenge is open" do
@@ -41,7 +41,7 @@ describe ChallengeSubmission do
     end
 
     it "verifies that the code submitted is parsable" do
-      allow(Language).to receive(:parsing?).and_return(false)
+      allow(Language).to receive(:parse).and_return([false, nil])
 
       expect(submission.update(code: 'unparsable code')).to be false
       expect(submission).to have_error_on :code
